@@ -8,5 +8,5 @@ document.addEventListener("DOMContentLoaded", function(){
             window.location.href='./portafolio.html'
         }
     }
-    setInterval(checkCollision, 70)
+    setInterval(checkCollision, 20)
 })
