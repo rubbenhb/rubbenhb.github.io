@@ -1,0 +1,141 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #222;
+    height: 100vh;
+}
+.container{
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 50vh;
+    width: 50vh;
+}
+.path{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    animation: eating-path 0.5s linear infinite;
+    position: relative;
+    top: 0.5rem;
+}
+.ghost {
+    /* Ajusta la posición del fantasma para que esté alineado con los puntos */
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    background-color: #f03f89;
+    border-radius: 50% 50% 0px 0px;
+
+    animation: ghost-approach 4s linear infinite;
+}
+.eye1{
+width: 20px;
+height: 20px;
+  background-color:white;
+  position:absolute;
+  border-radius:50%;
+  top:10px;
+  left:10px;
+}
+.eye2{
+width: 20px;
+height: 20px;
+  background-color:white;
+  position:absolute;
+  border-radius:50%;
+  top:10px;
+  left:35px;
+}
+.eye1::after{
+  content:"";
+width: 10px;
+height: 10px;
+  background-color:#222;
+  position: absolute;
+  border-radius: 50%;
+top: 6px;
+right: 10px;
+}
+.eye2::after{
+  content:"";
+width: 10px;
+height: 10px;
+  background-color:#222;
+  position: absolute;
+  border-radius: 50%;
+top: 6px;
+right: 10px;
+}
+.path::before{
+    content: " ";
+    background-color: #fff;
+    height:  1rem;
+    width: 1rem;
+    border-radius: 50%;
+}
+@keyframes eating-path{
+  0%{
+      transform: translateX(50%)
+  }
+  100%{
+      transform : translateX(-50%)
+  }
+}
+.pacman{
+  position: relative;
+  background: transparent;
+  z-index:1;
+}
+.pacman::before, .pacman::after{
+  content: "";
+  position: absolute;
+  top: -30px;
+  display: block;
+  border-radius:50%;
+  height: 0px;
+width: 0%;
+}
+.pacman::before{
+  animation: chunk-top 0.5s ease infinite;
+  border: 35px solid #ffcc00;
+  border-left-color:transparent;
+  border-bottom-color : transparent;
+}
+
+@keyframes chunk-top{
+0%,100%{
+    transform: rotate(-45deg);
+}
+50%{
+    transform:  rotate(-80deg);
+}
+}
+
+.pacman::after{
+animation: chunk-bottom 0.5s ease infinite;
+border:  35px solid #ffcc00;
+border-right-color: transparent;
+border-top-color: transparent;
+}
+@keyframes chunk-bottom{
+0%,100%{
+    transform: rotate(-40deg);
+}
+50%{
+    transform: rotate(0deg);
+}
+}
+@keyframes ghost-approach {
+    0% {
+        top: 10;
+        left: 80%;
+        transform: translateX(-50%);
+    }
+    100% {
+        top: 10;
+        left: 0;
+        transform: translateX(0);
+    }
+}
